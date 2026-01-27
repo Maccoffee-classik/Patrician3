@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="ru">
+<head>
+
+
+    <meta charset="UTF-8">
+    <title>Patrician</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GruzVoz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"  />
+</head>
+
+<body class="patrician">
+
+<!-- 1 экран: HERO -->
+<section class="p-screen p-screen-hero">
+    <div class="container patrician-container p-screen-container">
+        <div class="p-card p-card-fill p-hero-card">
+            <!-- фон задается в SCSS: .p-hero-card { background-image: url(...) } -->
+            <div class="p-hero-content">
+                <div class="p-kicker">Закрытый клуб знакомств</div>
+
+                <h1 class="p-hero-title">
+                    Высокие стандарты.<br />
+                    Абсолютная честность
+                </h1>
+
+                <a class="p-btn" href="#">Вступить в клуб</a>
+
+                <div class="p-hero-note">Москва &amp; Санкт-Петербург</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 2 экран: PROOF (телефоны + тексты) -->
+<section class="p-screen p-screen-proof">
+    <div class="container patrician-container p-screen-container">
+        <div class="p-card p-card-fill p-block">
+
+            <div class="p-brand">
+          <span class="p-mark" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M6 20h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M7 18l-2-9 7 5 7-5-2 9" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            </svg>
+          </span>
+                <span class="p-brand-name">PATRICIAN</span>
+            </div>
+
+            <div class="row align-items-center g-0 p-proof-row">
+                <div class="col-lg-3 p-proof-col p-proof-left order-2 order-lg-1">
+                    <div class="p-side-title">Проверенная аудитория</div>
+                    <div class="p-side-text">
+                        Анкеты на модерации.<br />
+                        Ручная проверка.
+                    </div>
+                </div>
+
+                <div class="col-lg-6 p-proof-col p-proof-center order-1 order-lg-2">
+                    <div class="p-phones">
+                        <!-- Заменить на реальные картинки -->
+                        <img class="p-phone p-phone-1" src="./assets/phone-1.png" alt="Экран приложения Patrician" />
+                        <img class="p-phone p-phone-2" src="./assets/phone-2.png" alt="Экран приложения Patrician" />
+                    </div>
+                </div>
+
+                <div class="col-lg-3 p-proof-col p-proof-right order-3 order-lg-3">
+                    <div class="p-side-title">
+                        Честные свидания,<br />
+                        открытый диалог
+                    </div>
+                    <div class="p-side-text">
+                        Верификация личности<br />
+                        и честные намерения
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- 3 экран (DESKTOP): 3 карточки в одном экране -->
+<section class="p-screen p-screen-features d-none d-lg-flex">
+    <div class="container patrician-container p-screen-container">
+        <div class="p-card p-card-fill p-block p-features-desktop">
+
+            <div class="p-brand">
+          <span class="p-mark" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M6 20h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M7 18l-2-9 7 5 7-5-2 9" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            </svg>
+          </span>
+                <span class="p-brand-name">PATRICIAN</span>
+            </div>
+
+            <div class="row g-0 p-features-row">
+                <div class="col-lg-4 p-feature-col">
+                    <article class="p-feature">
+                        <div class="p-feature-media p-media-1"></div>
+                        <div class="p-feature-title">Осознанный выбор</div>
+                        <div class="p-feature-text">
+                            Сдержанные анкеты, приоритет<br />
+                            смыслового общения.
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-lg-4 p-feature-col">
+                    <article class="p-feature">
+                        <div class="p-feature-media p-media-2"></div>
+                        <div class="p-feature-title">Москва &amp; Санкт-Петербург</div>
+                        <div class="p-feature-text">
+                            Территориальные ограничения.<br />
+                            Фокус на локальное сообщество.
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-lg-4 p-feature-col">
+                    <article class="p-feature">
+                        <div class="p-feature-media p-media-3"></div>
+                        <div class="p-feature-title">Конфиденциальность</div>
+                        <div class="p-feature-text">
+                            Данные защищены. Статус место<br />
+                            встречи — только по взаимному согласию.
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- 3 экран (MOBILE): Осознанный выбор -->
+<section class="p-screen p-screen-feature-single d-lg-none">
+    <div class="container patrician-container p-screen-container">
+        <div class="p-card p-card-fill p-feature-card">
+            <div class="p-brand">
+          <span class="p-mark" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M6 20h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M7 18l-2-9 7 5 7-5-2 9" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            </svg>
+          </span>
+                <span class="p-brand-name">PATRICIAN</span>
+            </div>
+
+            <div class="p-feature-media p-media-1 p-media-tall"></div>
+            <div class="p-feature-title">Осознанный выбор</div>
+            <div class="p-feature-text">
+                Сдержанные анкеты, приоритет смыслового общения.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 4 экран (MOBILE): Москва & Санкт-Петербург -->
+<section class="p-screen p-screen-feature-single d-lg-none">
+    <div class="container patrician-container p-screen-container">
+        <div class="p-card p-card-fill p-feature-card">
+            <div class="p-brand">
+          <span class="p-mark" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M6 20h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M7 18l-2-9 7 5 7-5-2 9" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            </svg>
+          </span>
+                <span class="p-brand-name">PATRICIAN</span>
+            </div>
+
+            <div class="p-feature-media p-media-2 p-media-tall"></div>
+            <div class="p-feature-title">Москва &amp; Санкт-Петербург</div>
+            <div class="p-feature-text">
+                Территориальные ограничения. Фокус на локальное сообщество.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 5 экран (MOBILE): Конфиденциальность -->
+<section class="p-screen p-screen-feature-single d-lg-none">
+    <div class="container patrician-container p-screen-container">
+        <div class="p-card p-card-fill p-feature-card">
+            <div class="p-brand">
+          <span class="p-mark" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M6 20h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M7 18l-2-9 7 5 7-5-2 9" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            </svg>
+          </span>
+                <span class="p-brand-name">PATRICIAN</span>
+            </div>
+
+            <div class="p-feature-media p-media-3 p-media-tall"></div>
+            <div class="p-feature-title">Конфиденциальность</div>
+            <div class="p-feature-text">
+                Данные защищены. Статус места встречи — только по взаимному согласию.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Последний экран: CTA -->
+<section class="p-screen p-screen-cta">
+    <div class="container patrician-container p-screen-container">
+        <div class="p-card p-card-fill p-cta-card">
+
+            <div class="p-brand p-brand-cta">
+          <span class="p-mark" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M6 20h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M7 18l-2-9 7 5 7-5-2 9" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            </svg>
+          </span>
+                <span class="p-brand-name">PATRICIAN</span>
+            </div>
+
+            <div class="p-cta-kicker">Высокие стандарты. Абсолютная честность</div>
+
+            <h2 class="p-cta-title">
+                Мы убрали лишнее,<br />
+                чтобы вы нашли главное
+            </h2>
+
+            <div class="p-cta-quote">Олег С. Основатель Patrician</div>
+
+            <a class="p-btn p-btn-cta" href="#">Вступить в клуб</a>
+
+            <div class="p-cta-links">
+                <a href="#">Условия использования</a>
+                <span class="p-dot" aria-hidden="true"></span>
+                <a href="#">Политика конфиденциальности</a>
+            </div>
+
+            <div class="p-cta-copy">© 2026 Patrician Club</div>
+
+        </div>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
