@@ -57,14 +57,13 @@ body.patrician {
 }
 
 .p-block {
-  padding: 26px 30px 30px 30px;
+  padding: 24px 120px 140px 120px;
 }
 
 .p-brand {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   color: rgba(255, 255, 255, 0.78);
   margin-bottom: 18px;
 }
@@ -75,8 +74,6 @@ body.patrician {
 }
 .p-brand .p-mark {
   display: inline-flex;
-  width: 18px;
-  height: 18px;
   align-items: center;
   justify-content: center;
 }
@@ -95,57 +92,86 @@ body.patrician {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   text-align: center;
-  padding: 30px 20px;
+  padding: 30px 20px 80px;
 }
 
 .p-kicker {
-  font-size: 12px;
-  line-height: 16px;
-  color: rgba(255, 255, 255, 0.48);
+  color: #dcdcdc;
   margin-bottom: 10px;
+  font-weight: 100;
+  font-size: 24px;
+  line-height: 120%;
+  text-align: center;
+  padding-bottom: 8px;
 }
 
 .p-hero-title {
   margin: 0 0 18px 0;
   font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-weight: 500;
-  font-size: 34px;
-  line-height: 40px;
-  letter-spacing: 0px;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 120%;
+  letter-spacing: 0.05em;
+  text-align: center;
+  color: #fffdfd;
+}
+
+.p-hero-note-subtitle {
+  font-weight: 200;
+  font-size: 14px;
+  line-height: 120%;
+  text-align: center;
+  color: #4c4c4c;
+  padding-top: 20px;
 }
 
 .p-hero-note {
-  margin-top: 14px;
-  font-size: 11px;
-  line-height: 14px;
-  color: rgba(255, 255, 255, 0.48);
+  font-weight: 200;
+  font-size: 14px;
+  line-height: 120%;
+  text-align: center;
+  color: #ababab;
+  padding-top: 4px;
 }
 
 /* BUTTON */
 .p-btn {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 100px;
+  padding: 24px 96px;
+  width: 350px;
+  height: 72px;
+  background: rgba(50, 50, 50, 0.2);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 42px;
   min-width: 170px;
-  padding: 0 22px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.26);
-  background: rgba(0, 0, 0, 0.25);
   text-decoration: none;
   color: rgba(255, 255, 255, 0.8);
-  font-size: 12px;
-  line-height: 12px;
   letter-spacing: 0px;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 120%;
+  color: #fffdfd;
+  backdrop-filter: blur(100px);
   transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
 }
 .p-btn:hover {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 100px;
+  padding: 24px 96px;
+  width: 350px;
+  height: 72px;
   transform: translateY(-1px);
-  background: rgba(0, 0, 0, 0.32);
-  border-color: rgba(255, 255, 255, 0.34);
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 120%;
+  color: #fffdfd;
   color: rgba(255, 255, 255, 0.88);
+  background: rgba(50, 50, 50, 0.4);
+  backdrop-filter: blur(100px);
 }
 
 /* PROOF */
@@ -168,36 +194,61 @@ body.patrician {
 .p-side-text {
   font-size: 11px;
   line-height: 16px;
-  color: rgba(255, 255, 255, 0.48);
+  color: #dcdcdc;
 }
 
-.p-phones {
+.phones-stage {
   position: relative;
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 820px;
+  height: 520px;
+  margin: 0 auto;
+  /* важно для пальца */
+  touch-action: none;
+  /* можно, чтобы курсор было видно */
 }
 
+/* Общие стили телефонов */
 .p-phone {
-  display: block;
-  width: 200px;
+  position: absolute;
   height: auto;
-  filter: drop-shadow(0 14px 26px rgba(0, 0, 0, 0.55));
+  display: block;
   user-select: none;
   -webkit-user-drag: none;
+  pointer-events: none;
+  filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.55));
 }
 
+/* Левый телефон */
 .p-phone-1 {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-65%) rotate(-10deg);
+  width: 455px;
+  left: 160px;
+  top: 100px;
 }
 
+/* Правый телефон */
 .p-phone-2 {
+  width: 478px;
+  left: 300px;
+  top: 100px;
+}
+
+/* Меню поверх 2-го телефона (то, что двигается) */
+.p-menu {
   position: absolute;
-  left: 50%;
-  transform: translateX(-5%) rotate(10deg);
+  width: 433px;
+  height: auto;
+  left: 384px;
+  top: 17px;
+  transform: translate3d(0, 0, 0) rotateZ(-1deg);
+  transform-origin: 50% 50%;
+  transition: transform 160ms ease;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Когда навели, чуть оживим даже без движения */
+.phones-stage:hover .p-menu.is-active {
+  transition: transform 220ms ease;
 }
 
 /* FEATURES (DESKTOP) */
@@ -257,7 +308,7 @@ body.patrician {
 .p-feature-text {
   font-size: 11px;
   line-height: 16px;
-  color: rgba(255, 255, 255, 0.48);
+  color: #dcdcdc;
 }
 
 /* MOBILE single feature card */
@@ -292,7 +343,7 @@ body.patrician {
   position: relative;
   font-size: 11px;
   line-height: 14px;
-  color: rgba(255, 255, 255, 0.48);
+  color: #dcdcdc;
   margin-bottom: 16px;
 }
 
@@ -310,7 +361,7 @@ body.patrician {
   position: relative;
   font-size: 11px;
   line-height: 14px;
-  color: rgba(255, 255, 255, 0.48);
+  color: #dcdcdc;
   margin-bottom: 18px;
 }
 
