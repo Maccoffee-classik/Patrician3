@@ -25,7 +25,17 @@
 <!-- 1 экран: HERO -->
 <section class="screen s1 p-screen p-screen-hero">
     <div class="container patrician-container p-screen-container">
-        <div class="p-card p-card-fill p-hero-card">
+        <div class="p-card p-card-fill p-hero-card lazy-bg"  data-bg="img/image-wrapper.png"
+             data-bgset="
+       img/image-wrapper-320.png 320w,
+       img/image-wrapper-640.png 640w,
+       img/image-wrapper-1024.png 1024w,
+       img/image-wrapper-1440.png 1440w
+     "
+             data-bgsizes="(max-width: 576px) 320px,
+                   (max-width: 768px) 640px,
+                   (max-width: 1200px) 1024px,
+                   1440px">
             <!-- фон задается в SCSS: .p-hero-card { background-image: url(...) } -->
             <div data-aos="fade-up" class="p-hero-content">
                 <div class="p-kicker">Закрытый клуб знакомств</div>
@@ -117,7 +127,7 @@
             <div class="row g-0 p-features-row">
                 <div class="col-lg-3 p-feature-col">
                     <article class="p-feature">
-                        <div class="p-feature-media p-media-1">
+                        <div data-io="fade-up" style="--dur:1800ms; --delay:150ms;" class="p-feature-media p-media-1">
                             <img class="p-img" src="img/p-media-1.png" alt="p-media-1" />
                         </div>
                         <div data-io="fade-up" style="--dur:1800ms; --delay:150ms;" class="p-feature-title">Осознанный выбор</div>
@@ -139,7 +149,7 @@
 
                 <div class="col-lg-3 p-feature-col">
                     <article class="p-feature">
-                        <div class="p-feature-media p-media-2">
+                        <div data-io="fade-up" style="--dur:1800ms; --delay:150ms;" class="p-feature-media p-media-2">
                             <img class="p-img" src="img/p-media-2.png" alt="p-media-2" />
                         </div>
                         <div data-io="fade-up" style="--dur:1800ms; --delay:150ms;" class="p-feature-title">Москва &amp; Санкт-Петербург</div>
@@ -161,7 +171,7 @@
 
                 <div class="col-lg-3 p-feature-col">
                     <article class="p-feature">
-                        <div class="p-feature-media p-media-3">
+                        <div data-io="fade-up" style="--dur:1800ms; --delay:150ms;" class="p-feature-media p-media-3">
                             <img class="p-img" src="img/p-media-3.png" alt="p-media-3" />
                         </div>
                         <div data-io="fade-up" style="--dur:1800ms; --delay:150ms;" class="p-feature-title">Конфиденциальность</div>
@@ -292,6 +302,112 @@
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+    ////////    лазилоад
+    (function () {
+        const els = Array.from(document.querySelectorAll('.lazy-bg[data-bgset], .lazy-bg[data-bg]'));
+        if (!els.length) return;
+
+        // Парс "img-320.png 320w, img-640.png 640w" -> [{url, w}]
+        function parseSet(str) {
+            return (str || '')
+                .split(',')
+                .map(s => s.trim())
+                .filter(Boolean)
+                .map(item => {
+                    const parts = item.split(/\s+/);
+                    const url = parts[0];
+                    const w = parseInt((parts[1] || '').replace('w',''), 10);
+                    return { url, w: isNaN(w) ? 0 : w };
+                })
+                .sort((a,b) => a.w - b.w);
+        }
+
+        // Берём ширину в CSS px из data-bgsizes (упрощённо: выбираем по брейкпоинтам)
+        function pickSizePx(sizes) {
+            if (!sizes) return null;
+            const vw = window.innerWidth;
+
+            // примитивный парсер под формат как у тебя: "(max-width: 576px) 320px, ... , 1440px"
+            const rules = sizes.split(',').map(s => s.trim()).filter(Boolean);
+
+            for (const r of rules) {
+                const m = r.match(/^\(max-width:\s*(\d+)px\)\s*(\d+)px$/);
+                if (m) {
+                    const maxW = parseInt(m[1], 10);
+                    const px = parseInt(m[2], 10);
+                    if (vw <= maxW) return px;
+                }
+            }
+            // последний без условия: "1440px"
+            const last = rules[rules.length - 1];
+            const lastPx = last && last.match(/^(\d+)px$/);
+            return lastPx ? parseInt(lastPx[1], 10) : null;
+        }
+
+        function chooseUrl(el) {
+            const fallback = el.dataset.bg;
+            const set = parseSet(el.dataset.bgset);
+            if (!set.length) return fallback || null;
+
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            const cssPx = pickSizePx(el.dataset.bgsizes);
+            const needed = Math.ceil((cssPx || el.getBoundingClientRect().width || window.innerWidth) * dpr);
+
+            // выбираем первый >= needed, иначе самый большой
+            const found = set.find(x => x.w >= needed) || set[set.length - 1];
+            return found?.url || fallback || null;
+        }
+
+        function applyBg(el) {
+            const url = chooseUrl(el);
+            if (!url) return;
+
+            // чтобы не мигало — грузим картинку заранее
+            const img = new Image();
+            img.onload = () => {
+                el.style.backgroundImage = `url("${url}")`;
+                el.classList.add('bg-loaded');
+                el.dataset.bgApplied = url;
+            };
+            img.src = url;
+        }
+
+        // Ленивый старт: грузим фон, когда блок близко к экрану
+        const root = document.getElementById('screens') || null; // если скролл внутри контейнера
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const el = entry.target;
+                applyBg(el);
+                io.unobserve(el);
+            });
+        }, { root, rootMargin: '200px 0px', threshold: 0.01 });
+
+        els.forEach(el => io.observe(el));
+
+        // Если ресайз/поворот — можно подменять на более крупный вариант
+        let t;
+        window.addEventListener('resize', () => {
+            clearTimeout(t);
+            t = setTimeout(() => {
+                els.forEach(el => {
+                    if (!el.dataset.bgApplied) return;
+                    // если уже применили — пробуем выбрать лучше
+                    applyBg(el);
+                });
+            }, 200);
+        });
+    })();
+
+
+
+
+
+
+
+
+
+
     document.addEventListener('DOMContentLoaded', () => {
         const els = Array.from(document.querySelectorAll('[data-io]'));
         if (!els.length) return;
@@ -553,6 +669,9 @@
         }, { passive: true });
 
     })();
+
+
+
 
 
 

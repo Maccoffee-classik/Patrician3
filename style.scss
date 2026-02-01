@@ -146,16 +146,23 @@ body.patrician {
 }
 
 /* HERO */
-.p-hero-card {
-
-  background: #0e0e0f;
-  background-image: url("img/image-wrapper.png");
-
-  background-size: cover;
-  background-position: center;
-
-
+.p-hero-card{
+  background-color:#0e0e0f;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:cover;
 }
+
+/* опционально: эффект загрузки */
+.lazy-bg{
+  opacity: .001;
+  transition: opacity .35s ease;
+}
+.lazy-bg.bg-loaded{
+  opacity: 1;
+}
+
+
 
 
 .p-hero-content {
