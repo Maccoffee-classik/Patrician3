@@ -7,6 +7,10 @@ html, body {
   height: 100%;
 }
 
+body {
+  overflow: hidden;
+}
+
 [data-io] {
   opacity: 0;
   transform: translate3d(var(--io-x, 0px), var(--io-y, 18px), 0);
@@ -646,39 +650,6 @@ body.patrician {
     line-height: 120%;
     text-align: center;
     color: rgba(255, 253, 253, 0.5);
-  }
-  .p-screen {
-    padding: 18px 0;
-  }
-  .p-card {
-    border-radius: 0px;
-  }
-  .p-card-fill {
-    height: calc(var(--screen-h) - 0px);
-  }
-  .p-block {
-    padding: 22px 18px 22px 18px;
-  }
-  /* на мобиле в макете чаще один телефон */
-  .p-media-tall {
-    height: 360px;
-  }
-  .p-cta-card {
-    padding: 24px 18px 22px 18px;
-  }
-  .p-cta-title {
-    font-size: 22px;
-    line-height: 28px;
-  }
-}
-@media (max-width: 575.98px) {
-  .patrician-container {
-    padding-left: 0px;
-    padding-right: 0px;
-  }
-  .p-btn {
-    min-width: 160px;
-    height: 40px;
   }
 }
 
