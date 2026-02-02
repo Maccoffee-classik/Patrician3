@@ -176,7 +176,6 @@ body.patrician {
 
 .p-kicker {
   color: #dcdcdc;
-  margin-bottom: 10px;
   font-weight: 100;
   font-size: 24px;
   line-height: 120%;
@@ -185,7 +184,7 @@ body.patrician {
 }
 
 .p-hero-title {
-  margin: 0 0 18px 0;
+  margin: 0 0 48px 0;
   font-family: "Playfair Display", ui-serif;
   font-weight: 400;
   font-size: 40px;
@@ -517,6 +516,137 @@ body.patrician {
 
 /* ===== MOBILE (desktop-first) ===== */
 @media (max-width: 991.98px) {
+  /*HERO*/
+  .p-kicker {
+    font-weight: 100;
+    font-size: 18px;
+    line-height: 120%;
+    text-align: center;
+    color: #dcdcdc;
+    padding-bottom: 12px;
+  }
+  .p-hero-title {
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 120%;
+    letter-spacing: 0.05em;
+    text-align: center;
+    color: #fffdfd;
+    margin: 0 0 40px 0;
+  }
+  .p-btn {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 100px;
+    padding: 16px 46px;
+    width: 219px;
+    height: 51px;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 120%;
+    color: #fffdfd;
+    background: rgba(50, 50, 50, 0.2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 170px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 0px;
+    color: #fffdfd;
+    backdrop-filter: blur(100px);
+    transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+  }
+  /*MOBILE: экран 2 (телефоны + тексты */
+  .phones-stage {
+    position: inherit;
+    width: 0;
+    height: 0;
+  }
+  .p-phone-1 {
+    width: 455px;
+    left: -10%;
+    top: 10%;
+  }
+  .p-side {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    margin-bottom: 60px;
+  }
+  .p-side-title {
+    text-align: center;
+  }
+  .p-brand {
+    display: flex;
+  }
+  .p-proof-mobile-text {
+    display: flex;
+    flex-direction: column;
+  }
+  .p-side-text {
+    text-align: center;
+  }
+  .p-phone-2 {
+    width: 300px;
+    left: -190px;
+    top: 0;
+  }
+  .p-menu {
+    position: absolute;
+    width: 282px;
+    height: auto;
+    left: -148px;
+    top: -55px;
+  }
+  /*cart section*/
+  .p-feature-title {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    text-align: left;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  .p-feature-text {
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 120%;
+    color: #bcbcbc;
+    margin-top: 20px;
+  }
+  .p-block-2 {
+    padding: 20px 20px 0 20px;
+  }
+  /*cta section*/
+  .p-cta-kicker {
+    font-weight: 100;
+    font-size: 14px;
+    line-height: 120%;
+    text-align: center;
+    color: #797979;
+  }
+  .p-cta-title {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 120%;
+    letter-spacing: 0.05em;
+    text-align: center;
+    color: #fffdfd;
+  }
+  .p-cta-quote {
+    font-weight: 100;
+    font-size: 18px;
+    line-height: 120%;
+    text-align: center;
+    color: #4c4c4c;
+  }
+  .p-cta-links {
+    font-weight: 200;
+    font-size: 16px;
+    line-height: 120%;
+    text-align: center;
+    color: rgba(255, 253, 253, 0.5);
+  }
   .p-screen {
     padding: 18px 0;
   }
@@ -529,24 +659,7 @@ body.patrician {
   .p-block {
     padding: 22px 18px 22px 18px;
   }
-  .p-hero-title {
-    font-family: "Playfair Display", ui-serif;
-    font-size: 24px;
-    line-height: 30px;
-  }
-  .p-phones {
-    height: 330px;
-  }
   /* на мобиле в макете чаще один телефон */
-  .p-phone-2 {
-    display: none;
-  }
-  .p-phone-1 {
-    transform: translateX(-50%) rotate(0deg);
-  }
-  .p-phone {
-    width: 210px;
-  }
   .p-media-tall {
     height: 360px;
   }
@@ -560,15 +673,12 @@ body.patrician {
 }
 @media (max-width: 575.98px) {
   .patrician-container {
-    padding-left: 14px;
-    padding-right: 14px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
   .p-btn {
     min-width: 160px;
     height: 40px;
-  }
-  .p-phone {
-    width: 200px;
   }
 }
 
